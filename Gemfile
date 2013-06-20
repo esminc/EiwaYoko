@@ -1,0 +1,23 @@
+source 'https://rubygems.org'
+
+gem 'rails', '4.0.0.rc1'
+gem 'pg'
+gem 'jquery-rails'
+gem 'turbolinks'
+gem 'jbuilder', '~> 1.0.1'
+gem 'haml-rails'
+
+group :assets do
+  gem 'sass-rails', '~> 4.0.0.rc1'
+  gem 'uglifier', '>= 1.3.0'
+  gem 'coffee-rails', '~> 4.0.0'
+  gem 'bootstrap-sass'
+end
+
+group :development do
+  group :test do
+    gem 'pry-rails'
+    gem 'awesome_print'
+    gem 'better_errors'
+  end
+end
