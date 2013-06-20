@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.0.0.rc1'
-gem 'pg'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.0.1'
@@ -15,9 +14,15 @@ group :assets do
 end
 
 group :development do
+  gem 'sqlite3'
+
   group :test do
     gem 'pry-rails'
     gem 'awesome_print'
     gem 'better_errors'
   end
+end
+
+group :production do
+  gem 'pg'
 end
