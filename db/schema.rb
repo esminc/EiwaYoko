@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130620050212) do
+ActiveRecord::Schema.define(version: 20130620084326) do
+
+  create_table "members", force: true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.boolean  "at_home"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "token_pairs", force: true do |t|
     t.string   "refresh_token"
