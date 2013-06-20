@@ -18,8 +18,6 @@ class MembersController < ApplicationController
       }
     )
     @cal = @events.data
-
-    # binding.pry
   end
 
   private
@@ -27,6 +25,6 @@ class MembersController < ApplicationController
   def set_date
     @date = DateTime.parse(params[:date])
   rescue
-    @date = Time.zone.now
+    @date = DateTime.now
   end
 end
