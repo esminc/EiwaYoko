@@ -14,6 +14,7 @@ class ApplicationController < ActionController::Base
     @client.authorization.scope = 'https://www.googleapis.com/auth/calendar https://www.googleapis.com/auth/calendar.readonly'
     @client.authorization.redirect_uri = oauth2callback_url
     @client.authorization.code = params[:code] if params[:code]
+
     if session[:token_id]
       token_pair = TokenPair.find(session[:token_id])
       @client.authorization.update_token!(token_pair.to_hash)

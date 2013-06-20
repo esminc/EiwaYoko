@@ -1,4 +1,6 @@
 class TokenPair < ActiveRecord::Base
+  attr_accessible :refresh_token, :access_token, :expires_in, :issued_at
+
   include ActiveModel::ForbiddenAttributesProtection
 
   def update_token!(object)

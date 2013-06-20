@@ -11,8 +11,11 @@ class AuthController < ApplicationController
       if session[:token_id]
         TokenPair.find(session[:token_id])
       else
-        TokenPair.new
+        TokenPair.create
       end
+
+    binding.pry
+
     token_pair.update_token!(@client.authorization)
     session[:token_id] = token_pair.id
     redirect_to '/'
