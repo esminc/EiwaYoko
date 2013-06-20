@@ -1,3 +1,42 @@
-%h1 結果（仮）
-- @cal.items.each do |item|
-  = item.summary
+%h1= @member.name
+
+%h2 #{@date.to_date.to_s} の予定
+
+= form_tag member_path(@member), method: :get do
+  = text_field_tag :date, nil, placeholder: @date.to_date.to_s, id: 'datepicker'
+  = submit_tag 'show'
+
+%h3 終日の予定
+
+- if @day_items.present?
+  %table.table.table-striped
+    - @day_items.each do |item|
+      %tr
+        %td
+          %h4
+            = "#{item.end.date}まで"
+          %p= item.summary
+- else
+  %p なし
+
+%h3 時間毎の予定
+
+- if @time_items.present?
+  %table.table.table-striped
+    - @time_items.each do |item|
+      %tr
+        %td
+          %h4
+            = "#{item.start.dateTime.strftime('%R')} から #{item.end.dateTime.strftime('%F %R')} まで"
+          %p= item.summary
+- else
+  %p なし
+
+:javascript
+  $(function(){
+    $("#datepicker").datepicker({
+      changeMonth: true,
+      changeYear: true,
+      dateFormat: 'yy-mm-dd'
+    });
+  });

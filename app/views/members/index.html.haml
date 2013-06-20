@@ -1,2 +1,3 @@
 %h1 Members
-= link_to 'Show', {controller:"members", action:"show"}, {id:"1"}
+- @members.each do |member|
+  %p= link_to member.name, member_path(member)

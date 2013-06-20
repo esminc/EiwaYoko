@@ -1,3 +1,5 @@
+require 'google/api_client'
+
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
@@ -5,7 +7,6 @@ class ApplicationController < ActionController::Base
 
   before_filter :oauth2
 
-  require 'google/api_client'
   def oauth2
     @client = Google::APIClient.new
     @client.authorization.client_id = ENV['YOKO_GOOGLE_ID']
@@ -17,10 +18,10 @@ class ApplicationController < ActionController::Base
       token_pair = TokenPair.find(session[:token_id])
       @client.authorization.update_token!(token_pair.to_hash)
     end
-    if @client.authorization.refresh_token && @client.authorization.expired?   
-      @client.authorization.fetch_access_token!  
-    end  
-    unless @client.authorization.access_token || request.path_info =~ /^\/oauth2/        
+    if @client.authorization.refresh_token && @client.authorization.expired?
+      @client.authorization.fetch_access_token!
+    end
+    unless @client.authorization.access_token || request.path_info =~ /^\/oauth2/
       redirect_to oauth2authorize_url
     end
   end
