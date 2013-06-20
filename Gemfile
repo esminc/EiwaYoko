@@ -5,6 +5,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.0.1'
 gem 'haml-rails'
+gem 'google-api-client'
 
 group :assets do
   gem 'sass-rails', '~> 4.0.0.rc1'
