@@ -9,7 +9,7 @@ class MembersController < ApplicationController
     @member = Member.find(params[:id])
 
     calendar = @client.discovered_api('calendar', 'v3')
-    @events = @client.execute(
+    events = @client.execute(
       api_method: calendar.events.list,
       :parameters => {
         calendarId: @member.email,
@@ -17,7 +17,13 @@ class MembersController < ApplicationController
         timeMax: @date + 1
       }
     )
-    @cal = @events.data
+
+    @day_items = events.data.items.select{|i|
+      i.start.date.present?
+    }.sort_by{|i| i.end.date }
+    @time_items = events.data.items.select{|i|
+      i.start.date.blank? && i.start.dateTime.to_date == @date.to_date
+    }.sort_by{|i| i.start.dateTime }
   end
 
   private
