@@ -1,3 +1,5 @@
-%h1 結果（仮）
+%h1 Hirata
 - @cal.items.each do |item|
-  = item.summary
+  %p= "summary: #{item.summary}"
+  %p= "start: #{item.start.dateTime}"
+  %p= "end: #{item.end.dateTime}"
