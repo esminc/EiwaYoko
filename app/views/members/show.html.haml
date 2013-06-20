@@ -1,4 +1,4 @@
-%h1 Hirata
+%h1= @member.name
 - @cal.items.each do |item|
   %p= "summary: #{item.summary}"
   %p= "start: #{item.start.dateTime}"

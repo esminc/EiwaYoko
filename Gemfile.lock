@@ -91,6 +91,8 @@ GEM
     multipart-post (1.2.0)
     pg (0.15.1)
     polyglot (0.3.3)
+    protected_attributes (1.0.1)
+      activemodel (>= 4.0.0.beta, < 5.0)
     pry (0.9.12.2)
       coderay (~> 1.0.5)
       method_source (~> 0.8)
@@ -163,6 +165,7 @@ DEPENDENCIES
   jbuilder (~> 1.0.1)
   jquery-rails
   pg
+  protected_attributes
   pry-rails
   rails (= 4.0.0.rc1)
   sass-rails (~> 4.0.0.rc1)

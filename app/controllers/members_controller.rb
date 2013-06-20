@@ -1,8 +1,11 @@
 class MembersController < ApplicationController
   def index
+    @members = Member.all
   end
 
   def show
+    @member = Member.find(params[:id])
+
     calendar = @client.discovered_api('calendar', 'v3')
 
     events = @client.execute(
