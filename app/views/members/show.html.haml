@@ -1,5 +1,13 @@
 %h1= @member.name
+
+%h2 #{@date.to_date.to_s} の予定
+
+= form_tag member_path(@member), method: :get do
+  = text_field_tag :date, nil, placeholder: @date.to_date.to_s, id: 'datepicker'
+  = submit_tag 'show'
+
 - @cal.items.each do |item|
   %p= "summary: #{item.summary}"
-  %p= "start: #{item.start.dateTime}"
-  %p= "end: #{item.end.dateTime}"
+  %p= "start: #{item.start.date || item.start.dateTime}"
+  %p= "end: #{item.end.date || item.end.dateTime}"
+
