@@ -14,8 +14,6 @@ class AuthController < ApplicationController
         TokenPair.create
       end
 
-    binding.pry
-
     token_pair.update_token!(@client.authorization)
     session[:token_id] = token_pair.id
     redirect_to '/'
