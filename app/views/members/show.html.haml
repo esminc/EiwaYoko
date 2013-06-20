@@ -11,6 +11,15 @@
   %p= "start: #{item.start.date || item.start.dateTime}"
   %p= "end: #{item.end.date || item.end.dateTime}"
 
+%table.table.table-striped
+  %tr
+    %td
+      hoge
+  %tr
+    %td
+      foo
+
+
 :javascript
   $(function(){
     $("#datepicker").datepicker({
