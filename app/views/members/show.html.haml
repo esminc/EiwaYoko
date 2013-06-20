@@ -11,3 +11,11 @@
   %p= "start: #{item.start.date || item.start.dateTime}"
   %p= "end: #{item.end.date || item.end.dateTime}"
 
+:javascript
+  $(function(){
+    $("#datepicker").datepicker({
+      changeMonth: true,
+      changeYear: true,
+      dateFormat: 'yy-mm-dd'
+    });
+  });
